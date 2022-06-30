@@ -20,6 +20,7 @@ import {
 import { navItems } from "./NavBarData";
 
 import Logo from "../../assets/img/logo.svg";
+import { MaxWidthCont } from "../Reusable";
 
 const NavBar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -27,33 +28,35 @@ const NavBar = () => {
   return (
     <NavBarWrap>
       <NavBarCont>
-        <NavBarLogoCont>
-          <img src={Logo} alt="" />
-        </NavBarLogoCont>
+        <MaxWidthCont>
+          <NavBarLogoCont>
+            <img src={Logo} alt="" />
+          </NavBarLogoCont>
 
-        <NavBarMobileIconCont
-          onClick={() => setShowMobileMenu(!showMobileMenu)}
-        >
-          {showMobileMenu ? <FaTimes /> : <HiMenu />}
-        </NavBarMobileIconCont>
+          <NavBarMobileIconCont
+            onClick={() => setShowMobileMenu(!showMobileMenu)}
+          >
+            {showMobileMenu ? <FaTimes /> : <HiMenu />}
+          </NavBarMobileIconCont>
 
-        <IconContext.Provider
-          value={{ style: { fontSize: "1.4em", color: "#333" } }}
-        >
-          <NavBarMenu showMobileMenu={showMobileMenu}>
-            {navItems.map((item) => (
-              <NavBarMenuItem
-                key={item.id}
-                onClick={() => setShowMobileMenu(!showMobileMenu)}
-              >
-                <NavBarMenuItemLink to={item.url}>
-                  {item.icon}
-                  <p>{item.text}</p>
-                </NavBarMenuItemLink>
-              </NavBarMenuItem>
-            ))}
-          </NavBarMenu>
-        </IconContext.Provider>
+          <IconContext.Provider
+            value={{ style: { fontSize: "1.4em", color: "#333" } }}
+          >
+            <NavBarMenu showMobileMenu={showMobileMenu}>
+              {navItems.map((item) => (
+                <NavBarMenuItem
+                  key={item.id}
+                  onClick={() => setShowMobileMenu(!showMobileMenu)}
+                >
+                  <NavBarMenuItemLink to={item.url}>
+                    {item.icon}
+                    <p>{item.text}</p>
+                  </NavBarMenuItemLink>
+                </NavBarMenuItem>
+              ))}
+            </NavBarMenu>
+          </IconContext.Provider>
+        </MaxWidthCont>
       </NavBarCont>
     </NavBarWrap>
   );

@@ -1,27 +1,25 @@
-import React from "react";
+import { ThemeProvider } from "styled-components";
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import theme from "./assets/themes/default";
 
-import Home from "./containers/Home";
-import Clothes from "./containers/Clothes";
-import Shoes from "./containers/Shoes";
-import Contact from "./containers/Contact";
+import GlobalStyles from "./assets/styles/GlobalStyles";
 
-const App = () => {
+//import { Container } from "./assets/styles/Container";
+
+import RoutesApp from "./routes/RoutesApp";
+
+function App() {
   return (
-    <>
-      <div>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/vestuario" element={<Clothes />}></Route>
-            <Route path="/calzado" element={<Shoes />}></Route>
-            <Route path="/contacto" element={<Contact />}></Route>
-          </Routes>
-        </BrowserRouter>
-      </div>
-    </>
+    <ThemeProvider theme={theme}>
+      <>
+        <GlobalStyles />
+
+        <>
+          <RoutesApp />
+        </>
+      </>
+    </ThemeProvider>
   );
-};
+}
 
 export default App;

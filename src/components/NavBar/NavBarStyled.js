@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 import { Link } from "react-router-dom";
 
-
 const NavBarWrap = styled.div`
   width: 100%;
 
@@ -12,11 +11,10 @@ const NavBarWrap = styled.div`
 `;
 
 const NavBarCont = styled.div`
-  display: flex;
-  justify-content: space-between;
-
-  max-width: 1200px;
-  margin: auto;
+  & > div {
+    display: flex;
+    justify-content: space-between;
+  }
 `;
 
 const NavBarLogoCont = styled.div`
