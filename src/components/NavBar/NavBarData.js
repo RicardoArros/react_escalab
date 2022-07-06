@@ -9,21 +9,21 @@ export const navItems = [
   },
   {
     id: 2,
-    url: "/vestuario",
-    text: "Vestuario",
+    url: "/category/1",
+    text: "Vinos",
     icon: <AiOutlineShop />,
   },
   {
     id: 3,
-    url: "/calzado",
-    text: "Calzado",
+    url: "/category/2",
+    text: "Espumantes",
     icon: <AiOutlineShop />,
   },
-  {
-    id: 4,
-    url: "/contacto",
-    text: "Contacto",
-    icon: <AiOutlineShop />,
-  },
+  // {
+  //   id: 4,
+  //   url: "/contacto",
+  //   text: "Contacto",
+  //   icon: <AiOutlineShop />,
+  // },
 ];
 

@@ -3,11 +3,20 @@ import React, { useEffect, useState } from "react";
 import Product from "./Product";
 import { ProductsCont } from "./ProductStyled";
 
-const Home = () => {
-  const [products, setProducts] = useState([]);
+import { useParams } from "react-router-dom";
 
-  const getProducts = () => {
-    fetch("https://pg-delsur.herokuapp.com/products")
+const Products = () => {
+  const [products, setProducts] = useState([]); 
+
+  const { idCategory } = useParams();
+
+  const getProducts = async (idCategoria = null) => {
+
+    console.log(idCategoria);
+
+    const url = idCategoria =! null ? `https://pg-delsur.herokuapp.com/products?categoryId=${idCategoria}` : 'https://pg-delsur.herokuapp.com/products';
+
+    await fetch(url)
       .then((response) => response.json())
       .then((data) => setProducts(data.products))
       .catch((error) =>
@@ -16,10 +25,10 @@ const Home = () => {
   };
 
   useEffect(() => {
-    getProducts();
+    getProducts(idCategory);
 
     // return () => {};
-  }, []);
+  }, [idCategory]);
 
   console.log(products);
 
@@ -46,4 +55,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Products;

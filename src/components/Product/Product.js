@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
+import { Link } from "react-router-dom";
 
 import { ProductCont } from "./ProductStyled";
 
@@ -19,6 +21,10 @@ const Product = (props) => {
               currency: "CLP",
             }).format(productCost)}
           </p>
+        </div>
+
+        <div>
+          <Link to={`/product/${props.id}`}>Ver detalles</Link>
         </div>
       </ProductCont>
     </>
