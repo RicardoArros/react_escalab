@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { ProductCont } from "./ProductStyled";
 
 const Product = (props) => {
-  const { productName, productCost, productImg } = props;
+  const { productName, productCost, productImg, productId } = props;
 
   return (
     <>
@@ -24,7 +24,7 @@ const Product = (props) => {
         </div>
 
         <div>
-          <Link to={`/product/${props.id}`}>Ver detalles</Link>
+          <Link to={`/product/${productId}`}>Ver detalles</Link>
         </div>
       </ProductCont>
     </>

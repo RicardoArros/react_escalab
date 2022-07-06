@@ -36,7 +36,7 @@ const Products = () => {
     <ProductsCont>
       {products.length > 0 ? (
         products?.map((product, index) => {
-          const { name, cost, image } = product;
+          const { name, cost, image, id } = product;
 
           return (
             <li key={index}>
@@ -44,6 +44,7 @@ const Products = () => {
                 productName={name}
                 productCost={cost}
                 productImg={image}
+                productId={id}
               />
             </li>
           );
