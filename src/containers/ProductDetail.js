@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import { useParams } from "react-router-dom";
 
+import { Layout, MaxWidthCont } from "../components/Reusable";
+
 const ProductDetail = () => {
   const [product, setProduct] = useState({});
 
@@ -9,8 +11,16 @@ const ProductDetail = () => {
 
   const getProductById = async () => {
     await fetch(` https://pg-delsur.herokuapp.com/products/${idProduct}`)
-      .then((response) => response.json())
-      .then((data) => setProduct(data))
+      .then((response) => {
+        const data = response.json();
+
+        console.log(data.product);
+      })
+      .then((data) => {
+        setProduct(data);
+
+        console.log(data);
+      })
       .catch((error) =>
         console.log(`Hubo un problema con la petición fetch: ${error.message}`)
       );
@@ -20,12 +30,12 @@ const ProductDetail = () => {
     getProductById();
 
     return () => {};
-  }, []);
+  }, [idProduct]);
 
   return (
-    <div>
-      ProductDetail<div>{product.name}</div>
-    </div>
+    <Layout>
+      <div> ProductDetail</div>
+    </Layout>
   );
 };
 

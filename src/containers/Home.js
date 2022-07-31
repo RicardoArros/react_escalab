@@ -4,13 +4,13 @@ import styled from "styled-components";
 
 import HomeProducts from "../components/Home/HomeProducts/HomeProducts";
 
-export const HomeWrap = styled.div``;
+import { Layout } from "../components/Reusable";
 
 const Home = () => {
   return (
-    <HomeWrap>
+    <Layout>
       <HomeProducts />
-    </HomeWrap>
+    </Layout>
   );
 };
 

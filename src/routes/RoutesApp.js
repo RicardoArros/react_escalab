@@ -8,8 +8,8 @@ import NavBar from "../components/NavBar/NavBar";
 
 import Home from "../containers/Home";
 
-import ProductDetail from "../components/Product/ProductDetail";
-import Products from "../components/Product/Products";
+import ProductDetail from "../containers/ProductDetail";
+import ProductCategory from "../containers/ProductCategory";
 
 const routesApp = () => {
   return (
@@ -20,9 +20,9 @@ const routesApp = () => {
         <NavBar />
 
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/product/:idProduct" element={<ProductDetail />}></Route>
-          <Route path="/category/:idCategory" element={<Products />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/product/:idProduct" element={<ProductDetail />} />
+          <Route path="/category/:idCategory" element={<ProductCategory />} />
         </Routes>
       </Router>
     </>

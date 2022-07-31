@@ -20,7 +20,7 @@ import {
 import { navItems } from "./NavBarData";
 
 import Logo from "../../assets/img/logo.svg";
-import { MaxWidthCont } from "../Reusable";
+import { Layout } from "../Reusable";
 
 const NavBar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -28,7 +28,7 @@ const NavBar = () => {
   return (
     <NavBarWrap>
       <NavBarCont>
-        <MaxWidthCont>
+        <Layout isNav>
           <NavBarLogoCont>
             <img src={Logo} alt="" />
           </NavBarLogoCont>
@@ -56,7 +56,7 @@ const NavBar = () => {
               ))}
             </NavBarMenu>
           </IconContext.Provider>
-        </MaxWidthCont>
+        </Layout>
       </NavBarCont>
     </NavBarWrap>
   );

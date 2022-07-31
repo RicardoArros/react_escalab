@@ -4,14 +4,10 @@ import { ProductsWrap } from "./HomeProductsStyled";
 
 import Products from "../../Product/Products";
 
-import { MaxWidthCont } from "../../Reusable";
-
 const HomeProducts = () => {
   return (
     <ProductsWrap>
-      <MaxWidthCont>
-        <Products />
-      </MaxWidthCont>
+      <Products />
     </ProductsWrap>
   );
 };

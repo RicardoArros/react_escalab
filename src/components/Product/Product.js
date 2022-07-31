@@ -13,6 +13,7 @@ const Product = (props) => {
         <div>
           <img src={productImg} alt="" />
         </div>
+        
         <div>
           <p>{productName}</p>
           <p>

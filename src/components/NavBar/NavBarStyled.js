@@ -7,7 +7,11 @@ const NavBarWrap = styled.div`
 
   background-color: #f5f5f5;
 
-  padding: 0.6rem 1rem;
+  // Desktop First rule
+  @media screen and (max-width: 960px) {
+    position: fixed;
+    top: 0;
+  }
 `;
 
 const NavBarCont = styled.div`
@@ -30,9 +34,9 @@ const NavBarMenu = styled.ul(
   align-items: center;
   gap: 2rem;
 
-  // Desktop First
+  // Desktop First rule
   @media screen and (max-width: 960px) {
-    position: absolute;
+    position: fixed;
     top: 58px;
     left: ${showMobileMenu ? "0" : "-100%"};
 
@@ -41,7 +45,7 @@ const NavBarMenu = styled.ul(
 
     background: #f5f5f5;
 
-    width: 80%;
+    min-width: 46vw;
     height: calc(100vh - 58px);
 
     padding: 1rem;

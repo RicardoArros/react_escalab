@@ -13,14 +13,14 @@ const ProductCont = styled.div`
 
   padding: 2rem;
 
-  min-height: 380px;
+  min-height: 38rem;
 
   border-radius: 1rem;
 
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
   & img {
-    max-height: 245px;
+    max-height: 24.5rem;
   }
 `;
 
