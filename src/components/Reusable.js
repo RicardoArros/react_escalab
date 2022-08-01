@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Layout = styled.div(
   ({ theme, isNav }) => ` 
   
-    padding: ${isNav ? "1rem 1.6rem" : "8rem 1.6rem 0"};
+    padding: ${isNav ? "1rem 1.6rem" : "5rem 1.6rem 0"};
 
     margin: auto;
 

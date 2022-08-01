@@ -13,9 +13,9 @@ const Products = () => {
   const getProducts = async (idCategoria = null) => {
     console.log(idCategoria);
 
-    const url = (idCategoria = !null
+    const url = idCategoria !== null
       ? `https://pg-delsur.herokuapp.com/products?categoryId=${idCategoria}`
-      : "https://pg-delsur.herokuapp.com/products");
+      : "https://pg-delsur.herokuapp.com/products";
 
     await fetch(url)
       .then((response) => response.json())
@@ -51,7 +51,7 @@ const Products = () => {
           );
         })
       ) : (
-        <li>Error</li>
+        <li>cargando...</li>
       )}
     </ProductsCont>
   );
