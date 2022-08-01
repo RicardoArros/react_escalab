@@ -4,6 +4,10 @@ const ProductsCont = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 3rem;
+
+  & > li {
+    //max-width: 30rem;
+  }
 `;
 
 const ProductCont = styled.div`
@@ -14,6 +18,7 @@ const ProductCont = styled.div`
   padding: 2rem;
 
   min-height: 38rem;
+  
 
   border-radius: 1rem;
 

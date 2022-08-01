@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { useParams } from "react-router-dom";
 
-import { collection, getDocs } from "firebase/firestore";
+import { collection, doc, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../utils/firebaseConfig";
 
 import Product from "./Product";
@@ -13,7 +13,8 @@ const Products = () => {
 
   const { idCategory } = useParams();
 
-  // const getProducts = async (idCategoria = null) => {
+  // GET PRODUCTS BY API
+  // const getProductsAPI = async (idCategoria = null) => {
   //   console.log(idCategoria);
 
   //   const url = idCategoria !== null
@@ -28,16 +29,41 @@ const Products = () => {
   //     );
   // };
 
+  // GET PRODUCTS BY FIRESTORE DB
   const getProducts = async () => {
-    const querySnapshot = await getDocs(collection(db, "products"));
-    querySnapshot.forEach((doc) => {
-      console.log(`${doc.id} => ${doc.data()}`);
-    });
+    let queryList;
+
+    if (idCategory) {
+      queryList = query(
+        collection(db, "products"),
+        where("categoryId", "==", parseInt(idCategory))
+      );
+    } else {
+      queryList = query(collection(db, "products"));
+    }
+
+    const querySnapshot = await getDocs(queryList);
+
+    // const querySnapshot = await getDocs(collection(db, "products"));
+
+    return querySnapshot.docs.map((document) => ({
+      id: document.id,
+      ...document.data(),
+    }));
+
+    // querySnapshot.forEach((doc) => {
+    //   console.log(`${doc.id} => ${doc.data()}`);
+    // });
   };
 
   useEffect(() => {
-    // getProducts(idCategory);
-    getProducts();
+    // getProductsAPI(idCategory);
+
+    console.log(idCategory)
+
+    getProducts()
+      .then((data) => setProducts(data))
+      .catch((err) => console.log(err));
 
     // return () => {};
   }, [idCategory]);
