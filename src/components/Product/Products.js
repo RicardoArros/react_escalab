@@ -1,32 +1,43 @@
 import React, { useEffect, useState } from "react";
 
+import { useParams } from "react-router-dom";
+
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../utils/firebaseConfig";
+
 import Product from "./Product";
 import { ProductsCont } from "./ProductStyled";
-
-import { useParams } from "react-router-dom";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
 
   const { idCategory } = useParams();
 
-  const getProducts = async (idCategoria = null) => {
-    console.log(idCategoria);
+  // const getProducts = async (idCategoria = null) => {
+  //   console.log(idCategoria);
 
-    const url = idCategoria !== null
-      ? `https://pg-delsur.herokuapp.com/products?categoryId=${idCategoria}`
-      : "https://pg-delsur.herokuapp.com/products";
+  //   const url = idCategoria !== null
+  //     ? `https://pg-delsur.herokuapp.com/products?categoryId=${idCategoria}`
+  //     : "https://pg-delsur.herokuapp.com/products";
 
-    await fetch(url)
-      .then((response) => response.json())
-      .then((data) => setProducts(data.products))
-      .catch((error) =>
-        console.log("Hubo un problema con la petición Fetch:" + error.message)
-      );
+  //   await fetch(url)
+  //     .then((response) => response.json())
+  //     .then((data) => setProducts(data.products))
+  //     .catch((error) =>
+  //       console.log("Hubo un problema con la petición Fetch:" + error.message)
+  //     );
+  // };
+
+  const getProducts = async () => {
+    const querySnapshot = await getDocs(collection(db, "products"));
+    querySnapshot.forEach((doc) => {
+      console.log(`${doc.id} => ${doc.data()}`);
+    });
   };
 
   useEffect(() => {
-    getProducts(idCategory);
+    // getProducts(idCategory);
+    getProducts();
 
     // return () => {};
   }, [idCategory]);
