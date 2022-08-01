@@ -18,7 +18,6 @@ const ProductCont = styled.div`
   padding: 2rem;
 
   min-height: 38rem;
-  
 
   border-radius: 1rem;
 
@@ -29,4 +28,35 @@ const ProductCont = styled.div`
   }
 `;
 
-export { ProductCont, ProductsCont };
+//
+const ProductDetailWrap = styled.div``;
+
+const ProductDetailTitle = styled.div`
+  margin-bottom: 5rem;
+`;
+
+const ProductDetailMain = styled.div`
+  display: grid;
+  // grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+`;
+
+const ProductDetailImg = styled.div``;
+
+const ProductDetailInfo = styled.div`
+  & > * {
+    margin-bottom: 3rem;
+  }
+`;
+
+
+export {
+  ProductCont,
+  ProductsCont,
+  ProductDetailWrap,
+  ProductDetailTitle,
+  ProductDetailMain,
+  ProductDetailImg,
+  ProductDetailInfo
+};

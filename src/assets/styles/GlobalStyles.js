@@ -51,7 +51,12 @@ const GlobalStyles = createGlobalStyle`
     font-family: inherit;
     color: inherit;
 
+    padding: .8rem 1rem; 
+
     border: none;
+    border-radius: 1rem;
+
+
     outline: none;
     
     cursor: pointer;
