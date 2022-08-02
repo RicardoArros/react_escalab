@@ -41,7 +41,7 @@ const ProductDetail = () => {
 
     setItemCount(qty);
 
-    cartContextFunct.addToCart(item)
+    cartContextFunct.addToCart();
   };
 
   console.log(idProduct);
