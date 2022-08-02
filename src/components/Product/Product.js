@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
 
-import { ProductCont } from "./ProductStyled";
+import { ProductCont, ProductInfo } from "./ProductStyled";
 
 const Product = (props) => {
-  const { productName, productCost, productImg, productId } = props;
+  const { productName, productCost, productImg, productId, productStock } = props;
 
   return (
     <>
@@ -13,8 +13,8 @@ const Product = (props) => {
         <div>
           <img src={productImg} alt="" />
         </div>
-        
-        <div>
+
+        <ProductInfo>
           <p>{productName}</p>
           <p>
             {Intl.NumberFormat("es-CL", {
@@ -22,7 +22,9 @@ const Product = (props) => {
               currency: "CLP",
             }).format(productCost)}
           </p>
-        </div>
+
+          <p>{productStock} unid.</p>
+        </ProductInfo>
 
         <div>
           <Link to={`/product/${productId}`}>Ver detalles</Link>
