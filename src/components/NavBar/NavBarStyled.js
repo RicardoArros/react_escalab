@@ -18,12 +18,21 @@ const NavBarCont = styled.div`
   & > div {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 `;
 
 const NavBarLogoCont = styled.div`
   & > img {
     width: 60px;
+  }
+`;
+
+const NavBarCartCont = styled.div`
+  & > svg {
+    font-size: 2.7rem;
+
+    cursor: pointer;
   }
 `;
 
@@ -93,5 +102,6 @@ export {
   NavBarMenuItem,
   NavBarMenuItemLink,
   NavBarLogoCont,
+  NavBarCartCont,
   NavBarMobileIconCont,
 };

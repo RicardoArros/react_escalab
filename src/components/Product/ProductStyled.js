@@ -50,7 +50,6 @@ const ProductDetailInfo = styled.div`
   }
 `;
 
-
 export {
   ProductCont,
   ProductsCont,
@@ -58,5 +57,5 @@ export {
   ProductDetailTitle,
   ProductDetailMain,
   ProductDetailImg,
-  ProductDetailInfo
+  ProductDetailInfo,
 };
