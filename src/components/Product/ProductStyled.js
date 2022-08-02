@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+// Product List
 const ProductsCont = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -10,6 +11,7 @@ const ProductsCont = styled.ul`
   }
 `;
 
+// Product Card
 const ProductCont = styled.div`
   display: flex;
   flex-direction: column;
@@ -28,7 +30,13 @@ const ProductCont = styled.div`
   }
 `;
 
-//
+const ProductInfo = styled.div`
+  & > * {
+    margin-bottom: 2rem;
+  }
+`;
+
+// Product Detail
 const ProductDetailWrap = styled.div``;
 
 const ProductDetailTitle = styled.div`
@@ -50,12 +58,22 @@ const ProductDetailInfo = styled.div`
   }
 `;
 
+// Product Count
+const ProductCountWrap = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
+
+
 export {
   ProductCont,
   ProductsCont,
+  ProductInfo,
   ProductDetailWrap,
   ProductDetailTitle,
   ProductDetailMain,
   ProductDetailImg,
   ProductDetailInfo,
+  ProductCountWrap
 };

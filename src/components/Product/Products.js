@@ -50,16 +50,12 @@ const Products = () => {
       id: document.id,
       ...document.data(),
     }));
-
-    // querySnapshot.forEach((doc) => {
-    //   console.log(`${doc.id} => ${doc.data()}`);
-    // });
   };
 
   useEffect(() => {
     // getProductsAPI(idCategory);
 
-    console.log(idCategory)
+    console.log(idCategory);
 
     getProducts()
       .then((data) => setProducts(data))
@@ -74,7 +70,7 @@ const Products = () => {
     <ProductsCont>
       {products.length > 0 ? (
         products?.map((product, index) => {
-          const { name, cost, image, id } = product;
+          const { name, cost, image, id, stock } = product;
 
           return (
             <li key={index}>
@@ -83,6 +79,7 @@ const Products = () => {
                 productCost={cost}
                 productImg={image}
                 productId={id}
+                productStock={stock}
               />
             </li>
           );

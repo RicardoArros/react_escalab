@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import {
   collection,
@@ -11,6 +11,8 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { db } from "../utils/firebaseConfig";
+
+import ProductCount from "../components/Product/ProductCount";
 
 import { Layout } from "../components/Reusable";
 
@@ -24,8 +26,15 @@ import {
 
 const ProductDetail = () => {
   const [product, setProduct] = useState({});
+  const [itemCount, setItemCount] = useState(0);
 
   const { idProduct } = useParams();
+
+  const onAdd = (qty) => {
+    alert("You have selected " + qty + " items.");
+
+    setItemCount(qty);
+  };
 
   console.log(idProduct);
 
@@ -55,10 +64,6 @@ const ProductDetail = () => {
       console.log("No existe el documento");
     }
   };
-
-  // const handleAddToCart2 = () => {
-  //   alert("Producto añadido");
-  // };
 
   //
   const handleAddToCart = () => {
@@ -131,7 +136,8 @@ const ProductDetail = () => {
           <ProductDetailInfo>
             <h4>{product.name}</h4>
             <p>{product.description}</p>
-            <p>Precio:{" "}
+            <p>
+              Precio:{" "}
               {Intl.NumberFormat("es-CL", {
                 style: "currency",
                 currency: "CLP",
@@ -140,7 +146,19 @@ const ProductDetail = () => {
 
             <p>Stock: {product.stock}</p>
 
-            <button onClick={handleAddToCart}>Añadir al carrito</button>
+            {/* <button onClick={handleAddToCart}>Añadir al carrito</button> */}
+
+            {itemCount === 0 ? (
+              <ProductCount
+                stock={product.stock}
+                initial={itemCount}
+                onAdd={onAdd}
+              />
+            ) : (
+              <Link to="/cart" style={{ textDecoration: "none" }}>
+                <button>CheckOut</button>
+              </Link>
+            )}
           </ProductDetailInfo>
         </ProductDetailMain>
       </ProductDetailWrap>

@@ -15,7 +15,7 @@ const Cart = () => {
     <div>
       Cart
       {contextGlobal.cartList.map((item, index) => (
-        <p key={item.id}>{item.name}</p>
+        <p key={index}>{item.name}</p>
       ))}
     </div>
   );
