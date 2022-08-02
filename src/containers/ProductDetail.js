@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import { Link, useParams } from "react-router-dom";
 
@@ -24,16 +24,24 @@ import {
   ProductDetailWrap,
 } from "../components/Product/ProductStyled";
 
+import { CartContext } from "../context/CartContext";
+
 const ProductDetail = () => {
   const [product, setProduct] = useState({});
   const [itemCount, setItemCount] = useState(0);
 
   const { idProduct } = useParams();
 
+  const {cartContextFunct} = useContext(CartContext)
+
+
+  //
   const onAdd = (qty) => {
     alert("You have selected " + qty + " items.");
 
     setItemCount(qty);
+
+    cartContextFunct.addToCart(item)
   };
 
   console.log(idProduct);

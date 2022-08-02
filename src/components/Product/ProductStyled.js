@@ -3,12 +3,11 @@ import styled from "styled-components";
 // Product List
 const ProductsCont = styled.ul`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-items: center;
   gap: 3rem;
 
-  & > li {
-    //max-width: 30rem;
-  }
+  
 `;
 
 // Product Card
@@ -17,9 +16,13 @@ const ProductCont = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
-  padding: 2rem;
 
+  //max-width: 33rem;
+  min-width: 30rem;
   min-height: 38rem;
+
+
+  padding: 2rem;
 
   border-radius: 1rem;
 
@@ -65,7 +68,6 @@ const ProductCountWrap = styled.div`
   gap: 1rem;
 `;
 
-
 export {
   ProductCont,
   ProductsCont,
@@ -75,5 +77,5 @@ export {
   ProductDetailMain,
   ProductDetailImg,
   ProductDetailInfo,
-  ProductCountWrap
+  ProductCountWrap,
 };

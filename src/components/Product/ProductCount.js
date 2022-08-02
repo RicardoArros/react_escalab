@@ -32,13 +32,15 @@ const ProductCount = ({ stock = 0, initial = 1, onAdd }) => {
         <button variant="text" onClick={decrement}>
           -
         </button>
-
-        {stock && count ? (
-          <button onClick={() => onAdd(count)}>Add to Cart</button>
-        ) : (
-          <button disabled>Add to Cart</button>
-        )}
       </ProductCountWrap>
+
+      <div>
+        {stock && count ? (
+          <button onClick={() => onAdd(count)}>Añadir al carrito</button>
+        ) : (
+          <button disabled>Añadir al carrito</button>
+        )}
+      </div>
     </>
   );
 };

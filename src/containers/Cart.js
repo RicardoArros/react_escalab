@@ -3,10 +3,12 @@ import React, { useContext, useEffect } from "react";
 import { CartContext } from "../context/CartContext";
 
 const Cart = () => {
-  const contextGlobal = useContext(CartContext);
+  const cartContextFunct = useContext(CartContext);
+
+  console.log(cartContextFunct);
 
   useEffect(() => {
-    contextGlobal.addToCart({ id: 1, name: "Agua" });
+    cartContextFunct.addToCart({ id: 1, name: "Agua" });
 
     return () => {};
   }, []);
@@ -14,7 +16,7 @@ const Cart = () => {
   return (
     <div>
       Cart
-      {contextGlobal.cartList.map((item, index) => (
+      {cartContextFunct.cartList.map((item, index) => (
         <p key={index}>{item.name}</p>
       ))}
     </div>
