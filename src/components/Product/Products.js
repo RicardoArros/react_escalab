@@ -14,52 +14,53 @@ const Products = () => {
   const { idCategory } = useParams();
 
   // GET PRODUCTS BY API
-  // const getProductsAPI = async (idCategoria = null) => {
-  //   console.log(idCategoria);
+  const getProductsAPI = async () => {
+    console.log(idCategory);
 
-  //   const url = idCategoria !== null
-  //     ? `https://pg-delsur.herokuapp.com/products?categoryId=${idCategoria}`
-  //     : "https://pg-delsur.herokuapp.com/products";
+    const url = idCategory !== null
+      ? `https://pg-delsur.herokuapp.com/products?categoryId=${idCategory}`
+      : "https://pg-delsur.herokuapp.com/products";
 
-  //   await fetch(url)
-  //     .then((response) => response.json())
-  //     .then((data) => setProducts(data.products))
-  //     .catch((error) =>
-  //       console.log("Hubo un problema con la petición Fetch:" + error.message)
-  //     );
-  // };
-
-  // GET PRODUCTS BY FIRESTORE DB
-  const getProducts = async () => {
-    let queryList;
-
-    if (idCategory) {
-      queryList = query(
-        collection(db, "products"),
-        where("categoryId", "==", parseInt(idCategory))
+    await fetch(url)
+      .then((response) => response.json())
+      .then((data) => setProducts(data.products))
+      .catch((error) =>
+        console.log("Hubo un problema con la petición Fetch:" + error.message)
       );
-    } else {
-      queryList = query(collection(db, "products"));
-    }
-
-    const querySnapshot = await getDocs(queryList);
-
-    // const querySnapshot = await getDocs(collection(db, "products"));
-
-    return querySnapshot.docs.map((document) => ({
-      id: document.id,
-      ...document.data(),
-    }));
   };
 
+  // GET PRODUCTS BY FIRESTORE DB
+  // const getProducts = async () => {
+  //   let queryList;
+
+  //   if (idCategory) {
+  //     queryList = query(
+  //       collection(db, "products"),
+  //       where("categoryId", "==", parseInt(idCategory))
+  //     );
+
+  //   } else {
+  //     queryList = query(collection(db, "products"));
+  //   }
+
+  //   const querySnapshot = await getDocs(queryList);
+
+  //   // const querySnapshot = await getDocs(collection(db, "products"));
+
+  //   return querySnapshot.docs.map((document) => ({
+  //     id: document.id,
+  //     ...document.data(),
+  //   }));
+  // };
+
   useEffect(() => {
-    // getProductsAPI(idCategory);
+    getProductsAPI(idCategory);
 
     console.log(idCategory);
 
-    getProducts()
-      .then((data) => setProducts(data))
-      .catch((err) => console.log(err));
+    // getProducts()
+    //   .then((data) => setProducts(data))
+    //   .catch((err) => console.log(err));
 
     // return () => {};
   }, [idCategory]);

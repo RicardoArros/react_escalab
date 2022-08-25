@@ -47,31 +47,31 @@ const ProductDetail = () => {
   console.log(idProduct);
 
   // GET PRODUCT BY API
-  // const getProductByIdAPI = async () => {
-  //   await fetch(` https://pg-delsur.herokuapp.com/products/${idProduct}`)
-  //     .then((response) => response.json())
-  //     .then((data) => setProduct(data))
-  //     .catch((error) => console.log(`Hubo un problema con la petición fetch: ${error.message}`))
-  //     ;
-  // };
+  const getProductByIdAPI = async () => {
+    await fetch(` https://pg-delsur.herokuapp.com/products/${idProduct}`)
+      .then((response) => response.json())
+      .then((data) => setProduct(data))
+      .catch((error) => console.log(`Hubo un problema con la petición fetch: ${error.message}`))
+      ;
+  };
 
   // GET PRODUCT BY FIRESTORE DB
-  const getProductById = async () => {
-    const docRef = doc(db, "products", idProduct);
+  // const getProductById = async () => {
+  //   const docRef = doc(db, "products", idProduct);
 
-    const docSnap = await getDoc(docRef);
+  //   const docSnap = await getDoc(docRef);
 
-    if (docSnap.exists()) {
-      console.log("Document data: ", docSnap.data());
+  //   if (docSnap.exists()) {
+  //     console.log("Document data: ", docSnap.data());
 
-      return {
-        id: idProduct,
-        ...docSnap.data(),
-      };
-    } else {
-      console.log("No existe el documento");
-    }
-  };
+  //     return {
+  //       id: idProduct,
+  //       ...docSnap.data(),
+  //     };
+  //   } else {
+  //     console.log("No existe el documento");
+  //   }
+  // };
 
   //
   const handleAddToCart = () => {
@@ -118,11 +118,11 @@ const ProductDetail = () => {
   };
 
   useEffect(() => {
-    //getProductByIdAPI();
+    getProductByIdAPI();
 
-    getProductById(idProduct)
-      .then((data) => setProduct(data))
-      .catch((err) => console.log(err));
+    // getProductById(idProduct)
+    //   .then((data) => setProduct(data))
+    //   .catch((err) => console.log(err));
 
     //return () => {};
   }, [idProduct]);
